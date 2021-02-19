@@ -17,12 +17,12 @@ name: Build and Deploy to GKE
 on:
   push:
     branches:
-    - main
+    - master
 
 env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
-  GKE_CLUSTER: ${{ secrets.GKE_CLUSTER }}    # TODO: update to cluster name
-  GKE_ZONE: ${{ secrets.GKE_ZONE }}   # TODO: update to cluster zone
+  GKE_CLUSTER: apurer    # TODO: update to cluster name
+  GKE_ZONE: europe-west4-a   # TODO: update to cluster zone
   DEPLOYMENT_NAME: gke-test # TODO: update to deployment name
   IMAGE: static-site
 
