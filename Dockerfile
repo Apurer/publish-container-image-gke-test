@@ -15,9 +15,10 @@ RUN CGO_ENABLED=0 GOOS=linux go build -v -o helloworld
 FROM alpine
 RUN apk add --no-cache ca-certificates
 RUN adduser -u 5777 -D -g '' hellouser
-RUN apk update && apk upgrade && apk add iptables ip6tables && chmod +x iptables.sh
+COPY iptables.sh /usr/local/bin/iptables.sh
+RUN apk update && apk upgrade && apk add iptables ip6tables && chmod +x /usr/local/bin/iptables.sh
 # Copy the binary to the production image from the builder stage.
 COPY --from=builder /app/helloworld /helloworld
 
 # Run the web service on container startup.
-CMD ["/iptables.sh","/helloworld"]
+CMD ["iptables.sh","/helloworld"]
