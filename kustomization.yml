@@ -18,4 +18,3 @@ resources:
 - deployment.yml
 - service.yml
 - gke-test-deny-external-egress.yml
-
