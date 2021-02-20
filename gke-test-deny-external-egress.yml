@@ -10,7 +10,9 @@ spec:
   - Egress
   egress:
   - ports:
-    - port: 8443
+    - port: 53
+      protocol: UDP
+    - port: 53
       protocol: TCP
   - to:
     - namespaceSelector: {}
