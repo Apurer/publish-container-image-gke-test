@@ -35,7 +35,20 @@ spec:
       - name: gke-test
         image: gcr.io/PROJECT_ID/IMAGE:TAG
         ports:
-        - containerPort: 5000
+        - containerPort: 8443
+        volumeMounts:
+          - name: tls
+            mountPath: /etc/tls
+            readOnly: true
+        env:
+          - name: TLS_CERT
+            value: /etc/tls/tls.crt
+          - name: TLS_KEY
+            value: /etc/tls/tls.key
+        volumes:
+            - name: tls
+              secret:
+                secretName: yourdomain-tls
         resources:
           requests:
             cpu: 100m
