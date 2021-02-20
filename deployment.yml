@@ -53,4 +53,4 @@ spec:
       volumes:
         - name: tls
           secret:
-          secretName: yourdomain-tls
+            secretName: yourdomain-tls
