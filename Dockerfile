@@ -21,4 +21,4 @@ RUN apk update && apk upgrade && apk add iptables ip6tables && chmod +x /usr/loc
 COPY --from=builder /app/helloworld /helloworld
 
 # Run the web service on container startup.
-CMD ["iptables.sh && /helloworld"]
+CMD ["/helloworld"]
