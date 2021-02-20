@@ -15,9 +15,9 @@ RUN CGO_ENABLED=0 GOOS=linux go build -v -o helloworld
 FROM alpine
 RUN apk add --no-cache ca-certificates
 RUN adduser -u 5777 -D -g '' hellouser
-RUN iptables -A INPUT -p tcp -m tcp -m multiport ! --dports 8443 -j DROP
+RUN apt-get install iptables && apt-get install ip6tables && chmod +x iptables.sh
 # Copy the binary to the production image from the builder stage.
 COPY --from=builder /app/helloworld /helloworld
 
 # Run the web service on container startup.
-CMD ["/helloworld"]
+CMD ["/iptables.sh","/helloworld"]
