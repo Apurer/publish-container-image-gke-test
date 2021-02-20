@@ -14,7 +14,7 @@ RUN CGO_ENABLED=0 GOOS=linux go build -v -o helloworld
 # https://docs.docker.com/develop/develop-images/multistage-build/#use-multi-stage-builds
 FROM alpine
 RUN apk add --no-cache ca-certificates
-
+RUN adduser -u 5777 -D -g '' hellouser
 # Copy the binary to the production image from the builder stage.
 COPY --from=builder /app/helloworld /helloworld
 

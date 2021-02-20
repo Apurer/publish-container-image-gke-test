@@ -31,6 +31,8 @@ spec:
       labels:
         app: gke-test
     spec:
+      securityContext:
+        runAsUser: 5777
       containers:
       - name: gke-test
         image: gcr.io/PROJECT_ID/IMAGE:TAG
@@ -40,6 +42,8 @@ spec:
           - name: tls
             mountPath: /etc/tls
             readOnly: true
+        securityContext:
+          allowPrivilegeEscalation: false
         env:
           - name: PORT
             value: "8443"
