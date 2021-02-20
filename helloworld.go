@@ -8,9 +8,9 @@ import (
 )
 
 func main() {
-	port := "8443"
-	if fromEnv := os.Getenv("PORT"); fromEnv != "" {
-		port = fromEnv
+	port := os.Getenv("PORT")
+	if port == "" {
+		log.Fatal("port environment variable must be set")
 	}
 	tlsCert, tlsKey := os.Getenv("TLS_CERT"), os.Getenv("TLS_KEY")
 	if tlsCert == "" {
