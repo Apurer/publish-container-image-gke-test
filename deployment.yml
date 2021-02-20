@@ -41,6 +41,8 @@ spec:
             mountPath: /etc/tls
             readOnly: true
         env:
+          - name: PORT
+            value: 8443
           - name: TLS_CERT
             value: /etc/tls/tls.crt
           - name: TLS_KEY
