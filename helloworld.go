@@ -10,7 +10,7 @@ import (
 func main() {
 	port := os.Getenv("PORT")
 	if port == "" {
-		log.Fatal("port environment variable must be set")
+		log.Fatal("PORT environment variable must be set")
 	}
 	tlsCert, tlsKey := os.Getenv("TLS_CERT"), os.Getenv("TLS_KEY")
 	if tlsCert == "" {
@@ -37,6 +37,7 @@ func hello(w http.ResponseWriter, r *http.Request) {
 	log.Printf("Serving request: %s", r.URL.Path)
 	host, _ := os.Hostname()
 	fmt.Fprintf(w, "Hello, world!\n")
+	fmt.Fprintf(w, "Scheme: %s", r.URL.Scheme)
 	fmt.Fprintf(w, "Protocol: %s!\n", r.Proto)
 	fmt.Fprintf(w, "Hostname: %s\n", host)
 	if headerIP := r.Header.Get("X-Forwarded-For"); headerIP != "" {
