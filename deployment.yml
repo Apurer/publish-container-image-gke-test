@@ -45,12 +45,12 @@ spec:
             value: /etc/tls/tls.crt
           - name: TLS_KEY
             value: /etc/tls/tls.key
-        volumes:
-            - name: tls
-              secret:
-                secretName: yourdomain-tls
         resources:
           requests:
             cpu: 100m
           limits:
             cpu: 100m
+      volumes:
+        - name: tls
+          secret:
+          secretName: yourdomain-tls
