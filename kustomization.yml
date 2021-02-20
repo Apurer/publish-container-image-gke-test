@@ -17,4 +17,4 @@ kind: Kustomization
 resources:
 - deployment.yml
 - service.yml
-- gke-test-deny-external-egress.yml
+- deny-from-other-namespaces.yml
