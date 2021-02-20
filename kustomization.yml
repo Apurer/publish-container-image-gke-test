@@ -17,4 +17,4 @@ kind: Kustomization
 resources:
 - deployment.yml
 - service.yml
-- default-deny-all.yaml
+- default-deny-ingress.yaml
