@@ -1,15 +1,15 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: gke-test-deny-external-egress
+  name: gke-test-deny-external-ingress
 spec:
   podSelector:
     matchLabels:
       app: gke-test
   policyTypes:
-  - Egress
-  egress: 
-    - ports:
+  - Ingress
+  ingress:
+  - ports:
     - port: 53
       protocol: UDP
     - port: 53

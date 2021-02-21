@@ -8,9 +8,11 @@ spec:
       app: gke-test
   policyTypes:
   - Egress
-  egress: 
-    - ports:
+  egress:
+  - ports:
     - port: 53
       protocol: UDP
     - port: 53
       protocol: TCP
+  - to:
+    - namespaceSelector: {}
