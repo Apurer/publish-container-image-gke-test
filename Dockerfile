@@ -18,7 +18,7 @@ RUN adduser -u 5777 -D -g '' hellouser
 #COPY iptables.sh /usr/local/bin/iptables.sh
 #RUN apk update && apk upgrade && apk add iptables ip6tables && chmod +x /usr/local/bin/iptables.sh
 # Copy the binary to the production image from the builder stage.
-#COPY --from=builder /app/helloworld /helloworld
+COPY --from=builder /app/helloworld /helloworld
 
 # Run the web service on container startup.
 CMD ["/helloworld"]
