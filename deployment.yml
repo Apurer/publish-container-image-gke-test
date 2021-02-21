@@ -39,6 +39,7 @@ spec:
         image: gcr.io/PROJECT_ID/IMAGE:TAG
         ports:
         - containerPort: 8443
+          protocol: TCP
         volumeMounts:
           - name: tls
             mountPath: /etc/tls

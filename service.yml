@@ -24,5 +24,6 @@ spec:
   ports:
     - port: 443
       targetPort: 8443
+      protocol: TCP
   selector:
     app: gke-test
