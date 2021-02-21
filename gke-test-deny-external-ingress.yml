@@ -9,8 +9,8 @@ spec:
   policyTypes:
   - Ingress
   ingress: 
-    - ports:
-      - port: 53
-        protocol: UDP
-      - port: 53
-        protocol: TCP
+  - ports:
+    - port: 53
+      protocol: UDP
+    - port: 53
+      protocol: TCP
