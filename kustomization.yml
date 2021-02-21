@@ -19,5 +19,5 @@ resources:
 - gke-test-namespace.yml
 - deployment.yml
 - service.yml
-# - gke-test-deny-external-egress.yml
-# - gke-test-deny-external-ingress.yml
+- gke-test-deny-external-egress.yml
+- gke-test-deny-external-ingress.yml
