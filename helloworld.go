@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strings"
 )
 
 func main() {
@@ -40,6 +41,12 @@ func hello(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Scheme: %s\n", r.URL.Scheme)
 	fmt.Fprintf(w, "Protocol: %s!\n", r.Proto)
 	fmt.Fprintf(w, "Hostname: %s\n", host)
+
+	ipAddr := strings.Split(r.RemoteAddr, ":")[0]
+	if ipAddr != "" {
+		fmt.Fprintf(w, "Client IP: %s\n", ipAddr)
+	}
+
 	if headerIP := r.Header.Get("X-Forwarded-For"); headerIP != "" {
 		fmt.Fprintf(w, "Client IP (X-Forwarded-For): %s\n", headerIP)
 	}
