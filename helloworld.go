@@ -7,6 +7,7 @@ import (
 	"net"
 	"net/http"
 	"os"
+	"strings"
 	"time"
 )
 
@@ -87,10 +88,22 @@ func hello(w http.ResponseWriter, r *http.Request) {
 func handleConnection(conn net.Conn) {
 	defer conn.Close()
 
+	hello := "hello there "
+
 	for {
 		time.Sleep(1 * time.Second)
 
-		n, err := conn.Write([]byte("hello there\n"))
+		var elloh = []string{}
+
+		for i := 0; i < len(hello)-1; i++ {
+			elloh = append(elloh, string(hello[i+1]))
+		}
+
+		elloh = append(elloh, string(hello[0]))
+
+		hello = strings.Join(elloh, "")
+
+		n, err := conn.Write([]byte(hello))
 		if err != nil {
 			log.Println(n, err)
 			return
