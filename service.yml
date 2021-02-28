@@ -22,10 +22,12 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-    - port: 443
+    - name: https
+      port: 443
       targetPort: 8443
       protocol: TCP
-    - port: 731
+    - name: tcp
+      port: 731
       targetPort: 7331
       protocol: TCP
   selector:
