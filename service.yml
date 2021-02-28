@@ -19,12 +19,14 @@ metadata:
   # namespace: gke-test-namespace
   annotations:
     service.alpha.kubernetes.io/app-protocols: '{"helloweb-tls":"HTTP2"}'
-    service.spec.externalTrafficPolicy: OnlyLocal
 spec:
   type: LoadBalancer
   ports:
     - port: 443
       targetPort: 8443
+      protocol: TCP
+    - port: 731
+      targetPort: 7331
       protocol: TCP
   selector:
     app: gke-test

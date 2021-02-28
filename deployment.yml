@@ -40,6 +40,8 @@ spec:
         ports:
         - containerPort: 8443
           protocol: TCP
+        - containerPort: 7331
+          protocol: TCP
         volumeMounts:
           - name: tls
             mountPath: /etc/tls
@@ -47,7 +49,9 @@ spec:
         securityContext:
           allowPrivilegeEscalation: false
         env:
-          - name: PORT
+          - name: TCP_SERVER_PORT
+            value: "7331"
+          - name: HTTP2_SERVER_PORT
             value: "8443"
           - name: TLS_CERT
             value: /etc/tls/tls.crt
