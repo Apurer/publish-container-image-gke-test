@@ -16,7 +16,6 @@ import (
 )
 
 func main() {
-
 	var (
 		dbUser    = os.Getenv("DB_USER") // e.g. 'my-db-user'
 		dbPwd     = os.Getenv("DB_PASS") // e.g. 'my-db-password'
