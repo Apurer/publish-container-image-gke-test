@@ -32,6 +32,7 @@ spec:
       labels:
         app: gke-test
     spec:
+      serviceAccountName: sql-user
       containers:
       - name: cloud-sql-proxy
         # It is recommended to use the latest version of the Cloud SQL proxy
@@ -51,7 +52,6 @@ spec:
           # The default Cloud SQL proxy image runs as the
           # "nonroot" user and group (uid: 65532) by default.
           runAsNonRoot: true
-          serviceAccountName: sql-user
           allowPrivilegeEscalation: false
       - name: gke-test
         image: gcr.io/PROJECT_ID/IMAGE:TAG
